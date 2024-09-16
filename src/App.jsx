@@ -7,10 +7,7 @@ function App() {
   const [password, setPassword] = useState("");
 
   //useRef hook
-  const passwordRef = useRef(null); // useRef hook is used to store the reference of an element between re-renders
-
-  // useCallback is a hook that will return a memoized version of the callback function that only changes if one of the dependencies has changed. it lets you cache fn definition between re-renders
-  // useCallback takes two arguments, the first is the function you want to memoize, the second is an array of dependencies that will trigger the function to re-run if they change
+  const passwordRef = useRef(null); 
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -26,9 +23,7 @@ function App() {
     setPassword(pass);
   }, [length, numberAllowed, charAllowed, setPassword]);
 
-  // setPassword is for optimization, dependencies me kuch bhi change hua to rerun hojayega fn and useCallback remembers it
-
-  // passwordGenerator(); // you can't call the function according to your choice, because react me me render/control nhi krta ye setValue setState control krte hain, now how to call this fn one way is button lgao, second is by useEffect hook.
+ 
 
   const copyPasswordToClipboard = useCallback(() => {
     passwordRef.current?.select();
@@ -41,9 +36,10 @@ function App() {
   }, [length, numberAllowed, charAllowed, passwordGenerator]);
 
   return (
-    <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500">
-      <h1 className="text-white text-center my-3">Password generator</h1>
-      <div className="flex shadow rounded-lg overflow-hidden mb-4">
+    <div className="w-full h-screen flex flex-col justify-center bg-gray-900">
+    <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 bg-gray-950 text-orange-500">
+      <h1 className="text-white text-center my-5 text-4xl font-semibold">Password generator</h1>
+      <div className="flex shadow rounded-lg overflow-hidden mb-5">
         <input
           type="text"
           value={password}
@@ -60,7 +56,7 @@ function App() {
         </button>
       </div>
 
-      <div className="flex text-sm gap-x-2">
+      <div className="flex text-sm gap-x-2 justify-center">
         <div className="flex items-center gap-x-1">
           <input
             type="range"
@@ -81,7 +77,7 @@ function App() {
             id="numberInput"
             onChange={() => {
               setNumberAllowed((prev) => !prev);
-              //When you use a function as the argument for setCharAllowed or setNumberAllowed, React provides the previous state value as the argument.
+
             }}
           />
           <label htmlFor="numberInput">Numbers</label>
@@ -98,6 +94,7 @@ function App() {
           <label htmlFor="characterInput">Characters</label>
         </div>
       </div>
+    </div>
     </div>
   );
 }
