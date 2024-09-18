@@ -15,11 +15,11 @@ This project is a Password Generator that creates secure and random passwords ba
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/05passwordGenerator.git
+    git clone https://github.com/sezallagwal/05passwordGenerator.git
     ```
 2. Navigate to the project directory:
     ```sh
-    cd 05passwordGenerator
+    cd 05PASSWORDGENERATOR
     ```
 3. Install the dependencies:
     ```sh
